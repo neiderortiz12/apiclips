@@ -24,11 +24,11 @@ class UserController extends Controller
         $user = User::whereEmail($request->email)->first();
         if(!is_null($user) && Hash::check($request->password, $user->password))
         {
-            $user->api_token = Str::random(100);
-            $user->save();
+            $token = $user->createToken('apiclips')->accessToken;
+
             return response()->json([
                 'res' => true,
-                'token' => $user->api_token,
+                'token' => $token,
                 'message' => 'bienvenido'
             ], 200);
         }
@@ -43,7 +43,9 @@ class UserController extends Controller
     public function logOut()
     {
         $user = auth()->user();
-        $user->api_token = null;
+        $user->tokens->each(function($token, $key){
+            $token->delete();
+        });
         $user->save();
 
         return response()->json([

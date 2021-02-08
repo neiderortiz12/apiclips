@@ -9,6 +9,6 @@ class Clips extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name','ruta','descripcion','confirmado'
+        'nombre','clip','descripcion','confirmado'
     ];
 }

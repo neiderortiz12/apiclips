@@ -12,14 +12,20 @@ class ClipsController extends Controller
     }
 
     public function postCreate(Request $request){
-        $clips = Clips::create($request->all());
-        /*
+        if($request->hasfile('clip')){
+            $file = $request->file('clip');
+            $nameFile = time()."-".$file->getClientOriginalName();
+            $ruta = $file->move(public_path().'/clips/', $nameFile);
+        }
+        #$clips = Clips::create($request->all());
+        
         $p = new Clips;
-        $p-> name = $request->nombre;
-        $p-> ruta = $request->ruta;
+        $p-> nombre = $request->nombre;
+        $p-> clip = $ruta;
         $p-> descripcion = $request->descripcion;
-        $p-> save();*/
-        return $clips;
+        $p-> confirmado = $request->confirmado;
+        $p-> save();
+        return $p;
 
     }
 }

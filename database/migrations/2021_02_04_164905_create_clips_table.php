@@ -15,8 +15,8 @@ class CreateClipsTable extends Migration
     {
         Schema::create('clips', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('ruta');
+            $table->string('nombre');
+            $table->string('clip');
             $table->string('descripcion');
             $table->boolean('confirmado')->default(false);
             $table->timestamps();

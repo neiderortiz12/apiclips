@@ -19,7 +19,7 @@ class UserController extends Controller
             'message' => 'Usuario creado con exito'
         ], 200);
     }
-    #bcrypt($request->password)==$user->password
+    
     public function login(Request $request){
         $user = User::whereEmail($request->email)->first();
         if(!is_null($user) && Hash::check($request->password, $user->password))
@@ -34,7 +34,7 @@ class UserController extends Controller
         }
         else{
             return response()->json([
-                'res' => true,
+                'res' => false,
                 'message' => 'cuenta o password incorrecta'
             ], 200);
         }

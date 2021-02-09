@@ -15,7 +15,8 @@ class ClipsController extends Controller
         if($request->hasfile('clip')){
             $file = $request->file('clip');
             $nameFile = time()."-".$file->getClientOriginalName();
-            $ruta = $file->move(public_path().'/clips/', $nameFile);
+            $ruta = "/public/clips/".$nameFile;
+            $file->move(public_path().'/clips/', $nameFile);
         }
         #$clips = Clips::create($request->all());
         

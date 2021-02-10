@@ -11,4 +11,8 @@ class Clips extends Model
     protected $fillable = [
         'nombre','clip','descripcion','confirmado'
     ];
+
+    protected $hidden =[
+        'created_at','updated_at'
+    ];
 }

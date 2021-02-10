@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClipsController;
 use App\Http\Controllers\UserController;
+use Illuminate\Routing\RouteRegistrar;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,10 +28,10 @@ Route::get('clips', [ClipsController::class, 'getShow']);
 Route::group(['middleware'=> 'auth:api'], function(){
     
     Route::post('logout', [UserController::class, 'logOut']);
+    Route::post('userupdate',[UserController::class, 'postUpdateUser']);
     Route::post('clips/create', [ClipsController::class, 'postCreate']);
+    Route::post('clips/delete', [ClipsController::class, 'postDelete']);
+    Route::post('clips/update', [ClipsController::class, 'postUpdate']);
     
 });
 
-
-//Route::post('login', [UserController::class, 'login']);
-//Route::get('/catalog',[CatalogController::class, 'getIndex']);

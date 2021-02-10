@@ -48,12 +48,18 @@ class UserController extends Controller
         $user->tokens->each(function($token, $key){
             $token->delete();
         });
-        $user->save();
+        //$user->save();
 
         return response()->json([
             'res' => true,
             'hola'=> $request->hola,
             'message' => 'adios'
         ], 200);
+    }
+    public function postUpdateUser(Request $request){
+        $user = User::whereEmail($request->email)->first();
+        if(!is_null($user)){
+            
+        }        
     }
 }

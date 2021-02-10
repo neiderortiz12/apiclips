@@ -22,7 +22,7 @@ class ClipsController extends Controller
             $file = $request->file('clip');
             return response()->json([
                 'res' => false,
-                'message' => 'al malo acurrio',
+                'message' => 'Ocurrio algo con el archivo',
             ], 200);
         }
         #$clips = Clips::create($request->all());
@@ -32,7 +32,24 @@ class ClipsController extends Controller
         $p-> descripcion = $request->descripcion;
         //$p-> confirmado = $request->confirmado;
         $p-> save();
-        return $p;
+        return response()->json([
+            'res' => true,
+            'message' => 'Registro exitoso',
+        ], 200);
 
+    }
+    public function postDelete(Request $request){
+        $clip = Clips::whereId($request->id)->first();
+        if(!is_null($clip))
+        {
+
+        }
+    }
+    public function postUpdate(Request $request){
+        $clip = Clips::whereId($request->id)->first();
+        if(!is_null($clip))
+        {
+            
+        }
     }
 }

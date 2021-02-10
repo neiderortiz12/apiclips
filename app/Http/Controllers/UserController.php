@@ -28,6 +28,8 @@ class UserController extends Controller
 
             return response()->json([
                 'res' => true,
+                'id'=> $user->id,
+                'name'=> $user->name,
                 'token' => $token,
                 'message' => 'bienvenido'
             ], 200);
@@ -40,7 +42,7 @@ class UserController extends Controller
         }
     }
 
-    public function logOut()
+    public function logOut(Request $request)
     {
         $user = auth()->user();
         $user->tokens->each(function($token, $key){
@@ -50,6 +52,7 @@ class UserController extends Controller
 
         return response()->json([
             'res' => true,
+            'hola'=> $request->hola,
             'message' => 'adios'
         ], 200);
     }

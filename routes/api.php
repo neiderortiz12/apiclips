@@ -22,11 +22,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('clips', [ClipsController::class, 'getShow']);
+
 Route::group(['middleware'=> 'auth:api'], function(){
     
     Route::post('logout', [UserController::class, 'logOut']);
+    Route::post('clips/create', [ClipsController::class, 'postCreate']);
+    
 });
 
-Route::post('clips/create', [ClipsController::class, 'postCreate']);
-Route::post('login', [UserController::class, 'login']);
+
+//Route::post('login', [UserController::class, 'login']);
 //Route::get('/catalog',[CatalogController::class, 'getIndex']);

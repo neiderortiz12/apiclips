@@ -24,6 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('clips', [ClipsController::class, 'getShow']);
+Route::get('clips/{id}', [ClipsController::class, 'getShowClip']);
+
 
 Route::group(['middleware'=> 'auth:api'], function(){
     

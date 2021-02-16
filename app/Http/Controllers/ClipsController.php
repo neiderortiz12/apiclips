@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 use App\Models\Clips;
 
@@ -27,6 +27,7 @@ class ClipsController extends Controller
         }
         #$clips = Clips::create($request->all());
         $p = new Clips;
+        $p-> user = $request ->user;
         $p-> nombre = $request->nombre;
         $p-> clip = $ruta;
         $p-> descripcion = $request->descripcion;
@@ -51,5 +52,23 @@ class ClipsController extends Controller
         {
             
         }
+    }
+    public function postClipsUser(Request $request){
+        //$clip = Clips::whereuser($request->user);
+        $clip = Clips::where('user', 'like', $request->user)->get();
+
+        if(!is_null($clip)){
+            return response()->json([
+                'res' => true,
+                'message' => 'Registro exitoso',
+                'clips'=> $clip
+            ], 200);
+        }else{
+            return response()->json([
+                'res' => false,
+                'message' => 'Registro exitoso',
+            ], 200);
+        }
+
     }
 }

@@ -9,7 +9,7 @@ class Clips extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nombre','clip','descripcion','confirmado'
+        'user','nombre','clip','descripcion','confirmado'
     ];
 
     protected $hidden =[

@@ -62,4 +62,24 @@ class UserController extends Controller
             
         }        
     }
+    public function getVerificar(){
+        return response()->json([
+            'res' => true,
+            'message' => 'autenticado'
+        ], 200);
+    }
+    public function postUser(Request $request){
+        $user = User::whereId($request->id)->first();
+        if(!is_null($user)){
+            return response()->json([
+                'res' => true,
+                'usuario' => $user
+            ], 200);
+        }else{
+            return response()->json([
+                'res' => false,
+                'usuario' => 'usuarion no encontrado'
+            ], 200);
+        }
+    }
 }

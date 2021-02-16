@@ -15,6 +15,7 @@ class CreateClipsTable extends Migration
     {
         Schema::create('clips', function (Blueprint $table) {
             $table->id();
+            $table->integer('user');
             $table->string('nombre');
             $table->string('clip');
             $table->string('descripcion');

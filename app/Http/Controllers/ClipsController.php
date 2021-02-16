@@ -11,6 +11,10 @@ class ClipsController extends Controller
         return $clips = Clips::all();
     }
 
+    public function getShowClip($id){
+        return $clips = Clips::findOrFail($id);
+    }
+
     public function postCreate(Request $request){
         if($request->hasfile('clip')){
             $file = $request->file('clip');

@@ -12,6 +12,9 @@
         <h4>Instrucciones de uso para API REST </h4>
         <p><strong>Auth - Login </strong><br>
 
+            
+            
+            
             POST /api/login <br>
             { <br>
                 "email": "",    =>REQUERIDO <br>
@@ -44,7 +47,8 @@
             GET /api/clips/$id<br><br>
 
             POST /api/create<br>
-            {
+            {<br>
+                "user": "",     =>REQUERIDO <br>
                 "clip": "",     =>REQUERIDO <br>
                 "nombre": "",    =>REQUERIDO <br>
                 "descripcion": ""  =>REQUERIDO <br>
@@ -52,6 +56,7 @@
 
             POST /api/delete<br>
             {<br>
+                "user": "",     =>REQUERIDO <br>
                 "clip": "",     =>REQUERIDO <br>
                 "nombre": "",    =>REQUERIDO <br>
                 "descripcion": ""  =>REQUERIDO <br>
@@ -59,11 +64,37 @@
 
             POST /api/update<br>
             {<br>
+                "user": "",     =>REQUERIDO <br>
                 "clip": "",     =>REQUERIDO <br>
                 "nombre": "",    =>REQUERIDO <br>
                 "descripcion": ""  =>REQUERIDO <br>
             }<br><br>
 
+            POST api/clips/user<br>
+            {<br>
+                "user": "",     =>REQUERIDO <br>
+                "clip": "",     =>REQUERIDO <br>
+                "nombre": "",    =>REQUERIDO <br>
+                "descripcion": ""  =>REQUERIDO <br>
+            }<br><br>
+
+            <strong>Usuario </strong><br>
+
+            GET /api/verificar<br>
+
+            POST /api/userupdate <br>
+            { <br>
+                "name": "",     =>REQUERIDO <br>
+                "email": "",    =>REQUERIDO <br>
+                "password": ""  =>REQUERIDO <br>
+            }<br><br>
+
+            POST /api/user <br>
+            { <br>
+                "name": "",     =>REQUERIDO <br>
+                "email": "",    =>REQUERIDO <br>
+                "password": ""  =>REQUERIDO <br>
+            }<br><br>
         </p>
     </body>
 </html>

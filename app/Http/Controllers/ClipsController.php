@@ -44,10 +44,21 @@ class ClipsController extends Controller
 
     }
     public function postDelete(Request $request){
-        $clip = Clips::whereId($request->id)->first();
+        $clip = Clips::find($request->id);
         if(!is_null($clip))
         {
+            //$file= file($clip->clip);
+            $clip->delete();
+            return response()->json([
+                'res' => true,
+                'message' => 'Elemento eliminado',
+            ], 200);
 
+        }else{
+            return response()->json([
+                'res' => false,
+                'message' => 'El elemento no pudo ser eliminado',
+            ], 200);
         }
     }
     public function postUpdate(Request $request){

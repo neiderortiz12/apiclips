@@ -8,7 +8,8 @@ use App\Models\Clips;
 class ClipsController extends Controller
 {
     public function getShow(){
-        return $clips = Clips::all();
+        //return $clips = Clips::all();
+        return $clips = Clips::where('confirmado', 1)->get();
     }
 
     public function getShowClip($id){
@@ -62,10 +63,22 @@ class ClipsController extends Controller
         }
     }
     public function postUpdate(Request $request){
-        $clip = Clips::whereId($request->id)->first();
+        $clip = Clips::find($request->id);
         if(!is_null($clip))
         {
-            
+            //$file= file($clip->clip);
+            $clip->confirmado = $request->confirmado;
+            $clip->save();
+            return response()->json([
+                'res' => true,
+                'message' => 'Elemento cambiado',
+            ], 200);
+
+        }else{
+            return response()->json([
+                'res' => false,
+                'message' => 'El elemento no pudo ser cambiado',
+            ], 200);
         }
     }
     public function postClipsUser(Request $request){

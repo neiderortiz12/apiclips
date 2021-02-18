@@ -12,9 +12,6 @@
         <h4>Instrucciones de uso para API REST </h4>
         <p><strong>Auth - Login </strong><br>
 
-            
-            
-            
             POST /api/login <br>
             { <br>
                 "email": "",    =>REQUERIDO <br>
@@ -43,6 +40,7 @@
             }<br><br>
 
             <strong>Videos</strong><br><br>
+            GET /api/clipsadmin<br>
             GET /api/clips<br>
             GET /api/clips/$id<br><br>
 
@@ -77,6 +75,7 @@
                 "nombre": "",    =>REQUERIDO <br>
                 "descripcion": ""  =>REQUERIDO <br>
             }<br><br>
+
 
             <strong>Usuario </strong><br>
 

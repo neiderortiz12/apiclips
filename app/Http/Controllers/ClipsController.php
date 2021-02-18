@@ -11,6 +11,10 @@ class ClipsController extends Controller
         //return $clips = Clips::all();
         return $clips = Clips::where('confirmado', 1)->get();
     }
+    public function getShowAdmin(){
+        return $clips = Clips::all();
+        //return $clips = Clips::where('confirmado', 1)->get();
+    }
 
     public function getShowClip($id){
         return $clips = Clips::findOrFail($id);

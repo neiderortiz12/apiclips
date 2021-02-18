@@ -21,15 +21,17 @@ use Illuminate\Routing\RouteRegistrar;
    # return $request->user();
 #});
 
-Route::post('register', [UserController::class, 'register']);
-Route::post('login', [UserController::class, 'login']);
-Route::get('clips', [ClipsController::class, 'getShow']);
-Route::get('clips/{id}', [ClipsController::class, 'getShowClip']);
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/clips', [ClipsController::class, 'getShow']);
+Route::get('/clips/{id}', [ClipsController::class, 'getShowClip']);
+
 
 
 Route::group(['middleware'=> 'auth:api'], function(){
     
     Route::post('/logout', [UserController::class, 'logOut']);
+    Route::get('/clipsadmin', [ClipsController::class, 'getShowAdmin']);
     Route::post('/userupdate',[UserController::class, 'postUpdateUser']);
     Route::post('/clips/create', [ClipsController::class, 'postCreate']);
     Route::post('/clips/delete', [ClipsController::class, 'postDelete']);

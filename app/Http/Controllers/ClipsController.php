@@ -24,7 +24,7 @@ class ClipsController extends Controller
         if($request->hasfile('clip')){
             $file = $request->file('clip');
             $nameFile = time()."-".$file->getClientOriginalName();
-            $ruta = "/public/clips/".$nameFile;
+            $ruta = "/clips/".$nameFile;
             $file->move(public_path().'/clips/', $nameFile);
             #$datico=json_decode($request->datos);
         }else{

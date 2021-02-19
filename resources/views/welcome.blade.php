@@ -76,7 +76,7 @@
                 "descripcion": ""  =>REQUERIDO <br>
             }<br><br>
 
-
+            
             <strong>Usuario </strong><br>
 
             GET /api/verificar<br>

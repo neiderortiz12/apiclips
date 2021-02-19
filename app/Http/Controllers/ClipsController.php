@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 use App\Models\Clips;
+use Illuminate\Support\Facades\File;
 
 class ClipsController extends Controller
 {
@@ -24,7 +25,7 @@ class ClipsController extends Controller
         if($request->hasfile('clip')){
             $file = $request->file('clip');
             $nameFile = time()."-".$file->getClientOriginalName();
-            $ruta = "/clips/".$nameFile;
+            $ruta = $nameFile;
             $file->move(public_path().'/clips/', $nameFile);
             #$datico=json_decode($request->datos);
         }else{
@@ -52,7 +53,12 @@ class ClipsController extends Controller
         $clip = Clips::find($request->id);
         if(!is_null($clip))
         {
+            $path = public_path().'/clips/'.$clip->clip;
+                if(File::exists($path)){
+                    unlink($path);
+                }
             //$file= file($clip->clip);
+            //unlink(public_path().'/clips/', $clip->clip);
             $clip->delete();
             return response()->json([
                 'res' => true,

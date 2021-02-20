@@ -82,4 +82,15 @@ class UserController extends Controller
             ], 200);
         }
     }
+
+    public function update(Request $request){
+        $user = User::find($request->id);
+        $user->rol = true;
+        $user->save();
+        return response()->json([
+            'res' => true,
+            'usuario' => 'usuario root'
+        ], 200);
+
+    }
 }

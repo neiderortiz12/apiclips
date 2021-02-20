@@ -29,7 +29,10 @@ Route::get('/clips/{id}', [ClipsController::class, 'getShowClip']);
 
 
 Route::group(['middleware'=> 'auth:api'], function(){
+
+
     
+    Route::post('/update', [UserController::class, 'update']);
     Route::post('/logout', [UserController::class, 'logOut']);
     Route::get('/clipsadmin', [ClipsController::class, 'getShowAdmin']);
     Route::post('/userupdate',[UserController::class, 'postUpdateUser']);

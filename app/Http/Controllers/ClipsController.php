@@ -25,7 +25,7 @@ class ClipsController extends Controller
         if($request->hasfile('clip')){
             $file = $request->file('clip');
             $nameFile = time()."-".$file->getClientOriginalName();
-            $ruta = $nameFile;
+            $ruta = '/'.$nameFile;
             $file->move(public_path().'/clips/', $nameFile);
             #$datico=json_decode($request->datos);
         }else{
@@ -53,7 +53,7 @@ class ClipsController extends Controller
         $clip = Clips::find($request->id);
         if(!is_null($clip))
         {
-            $path = public_path().'/clips/'.$clip->clip;
+            $path = public_path().'/clips'.$clip->clip;
                 if(File::exists($path)){
                     unlink($path);
                 }
@@ -109,4 +109,6 @@ class ClipsController extends Controller
         }
 
     }
+
+    
 }
